@@ -975,12 +975,54 @@ footer {
         min-height: auto;
     }
 
+    /* Options - Mobile optimized */
+    .options {
+        gap: 12px;
+        margin: 20px 0;
+    }
+
+    .option {
+        padding: 16px 20px;
+        font-size: 0.95rem;
+        min-height: 50px;
+        /* Better touch target */
+        display: flex;
+        align-items: center;
+    }
+
+    .option:hover:not(.correct):not(.wrong):not(:disabled) {
+        transform: translateX(5px);
+        /* Reduce transform for mobile */
+    }
+
+    /* Quiz controls - Mobile optimized */
     .quiz-controls {
         flex-direction: column;
+        gap: 12px;
+        margin-top: 20px;
     }
 
     .nav-btn {
         width: 100%;
+        padding: 16px 25px;
+        font-size: 0.95rem;
+        min-height: 50px;
+        /* Better touch target */
+    }
+
+    /* Result box - Mobile optimized */
+    .result-box {
+        padding: 30px 20px;
+        margin: 20px 15px;
+        max-width: calc(100% - 30px);
+    }
+
+    .result-icon {
+        font-size: 4rem;
+    }
+
+    .result-box h3 {
+        font-size: 1.5rem;
     }
 
     .result-details {
