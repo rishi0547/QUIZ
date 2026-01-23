@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Quiz | SA College of Engineering</title>
+    <link rel="stylesheet" href="quiz.css" />
+    <script defer src="quiz.js"></script>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <div class="logo-section">
+        <img src="FB_DP.jpg" />
+        <h1>SA College of Engineering</h1>
+      </div>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#categories">Categories</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#contact">Contact</a>
+        <button
+          id="theme-toggle"
+          class="theme-btn"
+          aria-label="Toggle dark/light mode"
+          title="Toggle Theme"
+        >
+          <span class="theme-icon">🌙</span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="overlay"></div>
+
+      <div class="hero-content">
+        <h2 class="reveal-text">ONLINE QUIZ PLATFORM</h2>
+        <p class="fade-up delay-1">
+          Challenge your brain. Compete with friends.
+        </p>
+        <p class="fade-up delay-2">Powered by Web Design Club</p>
+
+        <button class="start-btn glow">Start Quiz</button>
+      </div>
+
+      <div class="floating-circles">
+        <span></span><span></span><span></span>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+      <div class="stat-card fade-up">
+        <h3>500+</h3>
+        <p>Students Participated</p>
+      </div>
+      <div class="stat-card fade-up delay-1">
+        <h3>50+</h3>
+        <p>Quizzes Created</p>
+      </div>
+      <div class="stat-card fade-up delay-2">
+        <h3>10+</h3>
+        <p>Departments</p>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" id="features">
+      <h2 class="section-title">Platform Features</h2>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>⏱ Live Timer</h3>
+          <p>Timed quizzes to improve speed & accuracy.</p>
+        </div>
+        <div class="feature-card">
+          <h3>🏆 Leaderboard</h3>
+          <p>Compete with classmates and rank higher.</p>
+        </div>
+        <div class="feature-card">
+          <h3>📊 Instant Results</h3>
+          <p>Get scores immediately after submission.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="categories" id="categories">
+      <h2 class="section-title">Quiz Categories</h2>
+
+      <div class="category-grid">
+        <div class="category-card">Computer Science</div>
+        <div class="category-card">Aptitude</div>
+        <div class="category-card">General Knowledge</div>
+        <div class="category-card">Engineering Basics</div>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section class="quiz-section" id="quiz">
+      <h2 class="section-title">Online Quiz</h2>
+
+      <!-- Difficulty Selector -->
+      <div id="difficulty-selector" class="difficulty-selector">
+        <h3>Select Difficulty Level</h3>
+        <div class="difficulty-buttons">
+          <button class="difficulty-btn" data-level="easy" data-time="30">
+            <span class="diff-icon">😊</span>
+            <span>Easy</span>
+            <small>30s per question</small>
+          </button>
+          <button
+            class="difficulty-btn active"
+            data-level="medium"
+            data-time="20"
+          >
+            <span class="diff-icon">🤔</span>
+            <span>Medium</span>
+            <small>20s per question</small>
+          </button>
+          <button class="difficulty-btn" data-level="hard" data-time="10">
+            <span class="diff-icon">🔥</span>
+            <span>Hard</span>
+            <small>10s per question</small>
+          </button>
+        </div>
+        <button id="start-quiz-btn" class="start-btn glow">Start Quiz</button>
+      </div>
+
+      <div class="quiz-box hidden">
+        <!-- Progress Bar -->
+        <div class="progress-container">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="quiz-header">
+          <div id="q-number">Question 1 / 10</div>
+          <div id="score">Score: 0</div>
+        </div>
+
+        <!-- Timer Display -->
+        <div class="timer-container">
+          <svg class="timer-ring" width="80" height="80">
+            <circle class="timer-ring-bg" cx="40" cy="40" r="32"></circle>
+            <circle
+              class="timer-ring-progress"
+              cx="40"
+              cy="40"
+              r="32"
+              id="timer-circle"
+            ></circle>
+          </svg>
+          <div class="timer-text" id="timer-text">20</div>
+        </div>
+
+        <div id="question" class="question-text">Question text</div>
+
+        <div class="options" id="options-container">
+          <button class="option" tabindex="0"></button>
+          <button class="option" tabindex="0"></button>
+          <button class="option" tabindex="0"></button>
+          <button class="option" tabindex="0"></button>
+        </div>
+
+        <div class="quiz-controls">
+          <button
+            id="prevBtn"
+            class="nav-btn"
+            disabled
+            aria-label="Previous question"
+          >
+            ← Previous
+          </button>
+          <button
+            id="nextBtn"
+            disabled
+            class="nav-btn primary"
+            aria-label="Next question"
+          >
+            Next →
+          </button>
+        </div>
+      </div>
+
+      <div id="result" class="result-box hidden">
+        <div class="result-content">
+          <div class="result-icon">🎉</div>
+          <h3 id="final-score"></h3>
+          <div id="result-details" class="result-details"></div>
+          <div class="result-actions">
+            <button id="review-answers" class="start-btn">
+              Review Answers
+            </button>
+            <button id="restart" class="start-btn glow">Restart Quiz</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review Mode -->
+      <div id="review-section" class="review-section hidden">
+        <h2 class="section-title">Review Your Answers</h2>
+        <div id="review-container"></div>
+        <button id="close-review" class="start-btn">Close Review</button>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+      <p>© 2026 SAEC | Designed by Web Design Club</p>
+    </footer>
+  </body>
+</html>
